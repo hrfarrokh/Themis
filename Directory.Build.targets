@@ -1,0 +1,48 @@
+<Project>
+
+  <PropertyGroup>
+    <MsExtVersion>6.0.0</MsExtVersion>
+    <EfVersion>6.0.1</EfVersion>
+    <AutoMapperVersion>11.0.0</AutoMapperVersion>
+    <FluentValidationVersion>10.3.6</FluentValidationVersion>
+    <SwashbuckleVersion>6.2.3</SwashbuckleVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Extensions.Hosting.Abstractions" Version="$(MsExtVersion)"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EfVersion)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.Design" Version="$(EfVersion)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EfVersion)"/>
+    <PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="$(EfVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Ardalis.ApiEndpoints" Version="4.0.1" />
+    <PackageReference Update="Ardalis.GuardClauses" Version="4.0.0" />
+    <PackageReference Update="Ardalis.SmartEnum" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="AutoMapper" Version="$(AutoMapperVersion)" />
+    <PackageReference Update="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="$(AutoMapperVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FluentValidation" Version="$(FluentValidationVersion)" />
+    <PackageReference Update="FluentValidation.DependencyInjectionExtensions" Version="$(FluentValidationVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Swashbuckle.AspNetCore" Version="$(SwashbuckleVersion)" />
+    <PackageReference Update="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Serilog.AspNetCore" Version="4.1.0"/>
+    <PackageReference Update="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
+  </ItemGroup>
+
+</Project>

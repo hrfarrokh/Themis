@@ -1,0 +1,15 @@
+services:
+  themis:
+    image:  registry.hamrah-mechanic.com/${REGISTRY_PATH}/backend.themis:latest
+    container_name: ${CONTAINER_NAME}
+    ports:
+      - ${PORT}:80
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Tehran
+    restart: always
+networks:
+    default:
+      external: true
+      name: ${NETWORK}

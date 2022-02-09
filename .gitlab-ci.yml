@@ -1,0 +1,67 @@
+image: registry.hamrah-mechanic.com/hmlib/docker:20.10
+stages:
+  - build
+  - deploy
+ 
+variables:
+    GIT_STRATEGY: fetch
+    STACK_NAME: backend
+    PROJECT_NAME: themis    
+    IMAGE_LATEST: registry.hamrah-mechanic.com/hmlib/${CI_COMMIT_BRANCH}/${STACK_NAME}.${PROJECT_NAME}:latest
+    DEPLOY_COMMAND: cd /home/javid/DEPLOY_DIR/themis/${CI_COMMIT_BRANCH} && docker-compose pull && docker-compose up -d 
+ 
+.builddocker: &builddocker
+    stage: build
+    before_script:
+        - echo $REGISTRY_USERNAME
+        - echo $REGISTRY_PWD
+        - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PWD registry.hamrah-mechanic.com
+    script:
+        - docker build -t $IMAGE_LATEST .
+        - docker push $IMAGE_LATEST
+ 
+.deploybeforescript: &deploybeforescript
+     before_script:
+        - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+        - eval $(ssh-agent -s)
+        - echo $SSH_PRIVATE_KEY
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - ssh-keyscan -p $PORT $IPADDRESS >> ~/.ssh/known_hosts
+        - chmod 644 ~/.ssh/known_hosts
+ 
+.deployscript: &deployscript
+    stage: deploy
+    script:
+        - rsync -azvP -e "ssh -p 35535" docker-compose.yml $SSH_USER@$IPADDRESS:/home/javid/DEPLOY_DIR/themis/${CI_COMMIT_BRANCH}
+        - ssh -p $PORT $SSH_USER@$IPADDRESS ${DEPLOY_COMMAND}
+ 
+build:
+    <<: *builddocker
+    tags:
+        - themis-ci
+    only:
+    - development
+    - staging
+    - master
+ 
+deploy:
+    image: registry.hamrah-mechanic.com/hmlib/numb95/gitlab-ci-deploy-tools
+    rules:
+         - if: $CI_COMMIT_BRANCH == "master"
+           variables:
+                IPADDRESS: "185.211.56.75" 
+           when: manual
+         - if: $CI_COMMIT_BRANCH == "development"
+           variables:
+                IPADDRESS: "172.16.100.28" 
+           when: manual
+         - if: $CI_COMMIT_BRANCH == "staging"
+           variables:
+                IPADDRESS: "172.16.100.28" 
+           when: manual
+    <<: *deploybeforescript
+    <<: *deployscript
+    tags:
+        - themis-ci
