@@ -20,7 +20,7 @@ namespace Themis.Infrastructure.Services
 
         public string GetUsername()
         {
-            return "h.rezaei@hamrah-mechanic.com";
+            return "my@email.com";
         }
     }
 }

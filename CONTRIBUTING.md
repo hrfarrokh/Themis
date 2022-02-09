@@ -15,7 +15,3 @@ In order to avoid interruptions, we prefer communicating via GitLab issues, and 
 2. Always assign merge request to one of the maintainers
 3. Keep the discussions focused. When a new or related topic comes up it's often better to create new issue than
 to side track the discussion.
-
-See also:
-[How to contribute](docs/guidelines/contributor.md)
-
