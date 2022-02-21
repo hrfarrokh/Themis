@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Themis.Application.Contracts;
+using Themis.Application;
 using Themis.Core.Models;
 using Themis.Domain;
 
@@ -44,5 +44,6 @@ namespace Themis.Infrastructure.Persistance
         }
 
         public Task<Order> FindByIdAsync(Uuid id, CancellationToken ct = default) => throw new NotImplementedException();
+
     }
 }

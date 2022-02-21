@@ -1,9 +1,10 @@
+using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Themis.Application.Contracts;
+using Themis.Application;
 using Themis.Domain;
 using Themis.Infrastructure.Persistance;
 using Themis.Infrastructure.Services;
@@ -14,6 +15,9 @@ namespace Themis.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(DefaultTransactionPipline<,>));
+
+            services.AddScoped<IUnitOfWorkManager, EFUnitOfWorkManager>();
             services.AddScoped<IOrderRepository, OrderRepository>()
                     .AddScoped<IOrderMetadataRepository, OrderMetadataRepository>();
 

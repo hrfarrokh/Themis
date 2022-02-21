@@ -1,14 +1,15 @@
 using Ardalis.GuardClauses;
 using AutoMapper;
 using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Themis.Application.Contracts;
-using Themis.Application.Contracts.Persistance;
+using Themis.Application;
+using Themis.Application.Persistance;
 using Themis.Domain;
 
 namespace Themis.Application
 {
-    public class GetExhibitionOrderByIdHandler : IExhibitionOrderGetQueryHandler
+    public class GetExhibitionOrderByIdHandler : IRequestHandler<ExhibitionOrderGetQuery,OrderDto>
     {
         private readonly IQueryRepository _repository;
         private readonly IMapper _mapper;
@@ -20,7 +21,7 @@ namespace Themis.Application
             _mapper = mapper;
         }
 
-        public async Task<OrderDto> HandleAsync(
+        public async Task<OrderDto> Handle(
               ExhibitionOrderGetQuery request,
               CancellationToken ct)
         {

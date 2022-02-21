@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Themis.Application.Contracts.Persistance;
+using Themis.Application.Persistance;
 
 namespace Themis.Infrastructure.Persistance
 {

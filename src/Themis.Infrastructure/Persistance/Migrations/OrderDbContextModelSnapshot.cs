@@ -23,7 +23,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Themis.Application.Contracts.OrderEntity", b =>
+            modelBuilder.Entity("Themis.Application.OrderEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                     b.ToTable("Order", "ord");
                 });
 
-            modelBuilder.Entity("Themis.Application.Contracts.OrderEntityMetadata", b =>
+            modelBuilder.Entity("Themis.Application.OrderEntityMetadata", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,9 +134,9 @@ namespace Themis.Infrastructure.Persistance.Migrations
                     b.ToTable("OrderMetadata", "ord");
                 });
 
-            modelBuilder.Entity("Themis.Application.Contracts.OrderEntity", b =>
+            modelBuilder.Entity("Themis.Application.OrderEntity", b =>
                 {
-                    b.OwnsOne("Themis.Application.Contracts.EfCustomer", "Customer", b1 =>
+                    b.OwnsOne("Themis.Application.EfCustomer", "Customer", b1 =>
                         {
                             b1.Property<Guid>("OrderEntityId")
                                 .HasColumnType("uniqueidentifier");
@@ -164,7 +164,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                                 .HasForeignKey("OrderEntityId");
                         });
 
-                    b.OwnsOne("Themis.Application.Contracts.EfCity", "City", b1 =>
+                    b.OwnsOne("Themis.Application.EfCity", "City", b1 =>
                         {
                             b1.Property<Guid>("OrderEntityId")
                                 .HasColumnType("uniqueidentifier");
@@ -192,7 +192,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                                 .HasForeignKey("OrderEntityId");
                         });
 
-                    b.OwnsOne("Themis.Application.Contracts.EfAudit", "Creation", b1 =>
+                    b.OwnsOne("Themis.Application.EfAudit", "Creation", b1 =>
                         {
                             b1.Property<Guid>("OrderEntityId")
                                 .HasColumnType("uniqueidentifier");
@@ -217,7 +217,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                                 .HasForeignKey("OrderEntityId");
                         });
 
-                    b.OwnsOne("Themis.Application.Contracts.EfAudit", "Modification", b1 =>
+                    b.OwnsOne("Themis.Application.EfAudit", "Modification", b1 =>
                         {
                             b1.Property<Guid>("OrderEntityId")
                                 .HasColumnType("uniqueidentifier");
@@ -242,7 +242,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                                 .HasForeignKey("OrderEntityId");
                         });
 
-                    b.OwnsOne("Themis.Application.Contracts.OrderEntityItem", "Item", b1 =>
+                    b.OwnsOne("Themis.Application.OrderEntityItem", "Item", b1 =>
                         {
                             b1.Property<Guid>("OrderEntityId")
                                 .HasColumnType("uniqueidentifier");
@@ -258,7 +258,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("OrderEntityId");
 
-                            b1.OwnsOne("Themis.Application.Contracts.EfAppointment", "Appointment", b2 =>
+                            b1.OwnsOne("Themis.Application.EfAppointment", "Appointment", b2 =>
                                 {
                                     b2.Property<Guid>("OrderEntityItemOrderEntityId")
                                         .HasColumnType("uniqueidentifier");
@@ -277,7 +277,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                                         .HasForeignKey("OrderEntityItemOrderEntityId");
                                 });
 
-                            b1.OwnsOne("Themis.Application.Contracts.EfInventoryItem", "InventoryItem", b2 =>
+                            b1.OwnsOne("Themis.Application.EfInventoryItem", "InventoryItem", b2 =>
                                 {
                                     b2.Property<Guid>("OrderEntityItemOrderEntityId")
                                         .HasColumnType("uniqueidentifier");
@@ -305,7 +305,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                                     b2.WithOwner()
                                         .HasForeignKey("OrderEntityItemOrderEntityId");
 
-                                    b2.OwnsOne("Themis.Application.Contracts.EfCar", "Car", b3 =>
+                                    b2.OwnsOne("Themis.Application.EfCar", "Car", b3 =>
                                         {
                                             b3.Property<Guid>("EfInventoryItemOrderEntityItemOrderEntityId")
                                                 .HasColumnType("uniqueidentifier");
@@ -354,7 +354,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                                                 .HasForeignKey("EfInventoryItemOrderEntityItemOrderEntityId");
                                         });
 
-                                    b2.OwnsOne("Themis.Application.Contracts.EfCity", "City", b3 =>
+                                    b2.OwnsOne("Themis.Application.EfCity", "City", b3 =>
                                         {
                                             b3.Property<Guid>("EfInventoryItemOrderEntityItemOrderEntityId")
                                                 .HasColumnType("uniqueidentifier");
@@ -387,7 +387,7 @@ namespace Themis.Infrastructure.Persistance.Migrations
                                     b2.Navigation("City");
                                 });
 
-                            b1.OwnsOne("Themis.Application.Contracts.EfPackage", "Package", b2 =>
+                            b1.OwnsOne("Themis.Application.EfPackage", "Package", b2 =>
                                 {
                                     b2.Property<Guid>("OrderEntityItemOrderEntityId")
                                         .HasColumnType("uniqueidentifier");

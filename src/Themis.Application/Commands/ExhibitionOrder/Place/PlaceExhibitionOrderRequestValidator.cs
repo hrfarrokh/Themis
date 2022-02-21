@@ -1,5 +1,5 @@
 using FluentValidation;
-using Themis.Application.Contracts;
+using Themis.Application;
 using Themis.Domain;
 
 namespace Themis.Application

@@ -1,5 +1,5 @@
-using Themis.Application.Contracts;
-using Themis.Application.Contracts.Persistance;
+using Themis.Application;
+using Themis.Application.Persistance;
 using Themis.Core;
 using Themis.Domain;
 

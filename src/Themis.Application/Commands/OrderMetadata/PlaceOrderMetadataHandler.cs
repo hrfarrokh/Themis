@@ -1,11 +1,11 @@
 using Ardalis.GuardClauses;
-using Themis.Application.Contracts;
+using MediatR;
 using Themis.Core.Extensions;
 using Themis.Domain;
 
 namespace Themis.Application
 {
-    public class PlaceOrderMetadataHandler : IPlaceOrderMetadataHandler
+    public class PlaceOrderMetadataHandler : AsyncRequestHandler<PlaceOrderMetadataRequest>
     {
         private readonly IOrderMetadataRepository _repository;
 
@@ -14,7 +14,7 @@ namespace Themis.Application
             _repository = Guard.Against.Null(repository);
         }
 
-        public async Task HandleAsync(
+        protected override async Task Handle(
             PlaceOrderMetadataRequest request,
             CancellationToken ct)
         {

@@ -1,12 +1,13 @@
 using Ardalis.GuardClauses;
 using FluentValidation;
-using Themis.Application.Contracts;
+using MediatR;
 using Themis.Core.Models;
 using Themis.Domain;
 
 namespace Themis.Application
 {
-    public class PlaceExhibitionOrderHandler : IPlaceExhibitionOrderHandler
+    public class PlaceExhibitionOrderHandler
+        : IRequestHandler<PlaceExhibitionOrderRequest, PlaceExhibitionOrderResponse>
     {
         private readonly IOrderRepository _repository;
         private readonly IValidator<PlaceExhibitionOrderRequest> _validator;
@@ -30,7 +31,7 @@ namespace Themis.Application
             _inventoryService = Guard.Against.Null(inventoryService);
         }
 
-        public async Task<PlaceExhibitionOrderResponse> HandleAsync(
+        public async Task<PlaceExhibitionOrderResponse> Handle(
               PlaceExhibitionOrderRequest request,
               CancellationToken ct)
         {

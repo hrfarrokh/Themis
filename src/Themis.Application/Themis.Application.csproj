@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
   </ItemGroup>
@@ -24,7 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Themis.Domain\Themis.Domain.csproj" />
-    <ProjectReference Include="..\Themis.Application.Contracts\Themis.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Themis.Core.LhsBracket.LinqExpression\Themis.Core.LhsBracket.LinqExpression.csproj" />
   </ItemGroup>
 
 </Project>

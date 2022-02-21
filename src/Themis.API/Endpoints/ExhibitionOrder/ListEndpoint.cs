@@ -1,9 +1,10 @@
 using Ardalis.ApiEndpoints;
 using Ardalis.GuardClauses;
 using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using Themis.Application.Contracts;
+using Themis.Application;
 
 namespace Themis.API
 {
@@ -11,11 +12,11 @@ namespace Themis.API
         .WithRequest<ExhibitionOrderListQuery>
         .WithResult<ListResponse<OrderListDto>>
     {
-        private readonly IExhibitionOrderListQueryHandler _handler;
+        private readonly IMediator _mediator;
 
-        public ListEndpoint(IExhibitionOrderListQueryHandler handler)
+        public ListEndpoint(IMediator mediator)
         {
-            _handler = Guard.Against.Null(handler);
+            _mediator = Guard.Against.Null(mediator);
         }
 
         [HttpGet(ExhibitionOrderListQuery.Route)]
@@ -29,7 +30,7 @@ namespace Themis.API
         {
             Guard.Against.Null(request);
 
-            return await _handler.HandleAsync(request, ct);
+            return await _mediator.Send(request, ct);
         }
 
     }

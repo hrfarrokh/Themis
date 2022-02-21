@@ -1,4 +1,4 @@
-using Themis.Application.Contracts.Persistance;
+using Themis.Application.Persistance;
 using Themis.Domain;
 
 namespace Themis.Infrastructure.Persistance

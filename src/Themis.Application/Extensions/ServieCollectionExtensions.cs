@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using Themis.Application.Contracts;
 
 namespace Themis.Application
 {
@@ -7,10 +6,10 @@ namespace Themis.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            return services.AddScoped<IPlaceExhibitionOrderHandler, PlaceExhibitionOrderHandler>()
-                           .AddScoped<IPlaceOrderMetadataHandler, PlaceOrderMetadataHandler>()
-                           .AddScoped<IExhibitionOrderListQueryHandler, ExhibitionOrderListQueryHandler>()
-                           .AddScoped<IExhibitionOrderGetQueryHandler, GetExhibitionOrderByIdHandler>();
+            return services.AddScoped<PlaceExhibitionOrderHandler>()
+                           .AddScoped<PlaceOrderMetadataHandler>()
+                           .AddScoped<ExhibitionOrderListQueryHandler>()
+                           .AddScoped<GetExhibitionOrderByIdHandler>();
         }
     }
 }

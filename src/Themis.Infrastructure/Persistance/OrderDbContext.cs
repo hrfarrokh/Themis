@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Themis.Application.Contracts;
+using Themis.Application;
 
 namespace Themis.Infrastructure.Persistance
 {
@@ -16,7 +16,7 @@ namespace Themis.Infrastructure.Persistance
             _logger = logger;
         }
 
-        public IQueryable<T> Query<T>() where T : class => Set<T>();
+        public IQueryable<T> Query<T>() where T : class => Set<T>().AsNoTracking();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

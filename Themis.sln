@@ -31,7 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themis.Core", "src\Themis.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themis.Application", "src\Themis.Application\Themis.Application.csproj", "{BCC975AD-B17B-4E77-89D8-9E06A9411290}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themis.Application.Contracts", "src\Themis.Application.Contracts\Themis.Application.Contracts.csproj", "{744C2293-58B9-4FFB-9472-312BF1B431A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themis.Core.LhsBracket.Abstractions", "src\Themis.Core.LhsBracket.Abstractions\Themis.Core.LhsBracket.Abstractions.csproj", "{CF168A2A-2306-4319-977A-C50A75354D81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themis.Core.LhsBracket.LinqExpression", "src\Themis.Core.LhsBracket.LinqExpression\Themis.Core.LhsBracket.LinqExpression.csproj", "{4707AD44-913D-41B2-9F2E-06EDBD80D607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themis.Core.LhsBracket.ModelBinder", "src\Themis.Core.LhsBracket.ModelBinder\Themis.Core.LhsBracket.ModelBinder.csproj", "{72664E68-CF0B-4490-800B-5CEF066AF753}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +63,18 @@ Global
 		{BCC975AD-B17B-4E77-89D8-9E06A9411290}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCC975AD-B17B-4E77-89D8-9E06A9411290}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCC975AD-B17B-4E77-89D8-9E06A9411290}.Release|Any CPU.Build.0 = Release|Any CPU
-		{744C2293-58B9-4FFB-9472-312BF1B431A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{744C2293-58B9-4FFB-9472-312BF1B431A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{744C2293-58B9-4FFB-9472-312BF1B431A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{744C2293-58B9-4FFB-9472-312BF1B431A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF168A2A-2306-4319-977A-C50A75354D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF168A2A-2306-4319-977A-C50A75354D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF168A2A-2306-4319-977A-C50A75354D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF168A2A-2306-4319-977A-C50A75354D81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4707AD44-913D-41B2-9F2E-06EDBD80D607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4707AD44-913D-41B2-9F2E-06EDBD80D607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4707AD44-913D-41B2-9F2E-06EDBD80D607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4707AD44-913D-41B2-9F2E-06EDBD80D607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72664E68-CF0B-4490-800B-5CEF066AF753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72664E68-CF0B-4490-800B-5CEF066AF753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72664E68-CF0B-4490-800B-5CEF066AF753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72664E68-CF0B-4490-800B-5CEF066AF753}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,7 +86,9 @@ Global
 		{7185E00A-8C84-475B-89EF-696CFB50F7A5} = {96455E4A-96B7-4E64-8CFC-6E2FA261D766}
 		{24D77267-0246-49EE-8875-C6E947EE8ADE} = {96455E4A-96B7-4E64-8CFC-6E2FA261D766}
 		{BCC975AD-B17B-4E77-89D8-9E06A9411290} = {96455E4A-96B7-4E64-8CFC-6E2FA261D766}
-		{744C2293-58B9-4FFB-9472-312BF1B431A0} = {96455E4A-96B7-4E64-8CFC-6E2FA261D766}
+		{CF168A2A-2306-4319-977A-C50A75354D81} = {96455E4A-96B7-4E64-8CFC-6E2FA261D766}
+		{4707AD44-913D-41B2-9F2E-06EDBD80D607} = {96455E4A-96B7-4E64-8CFC-6E2FA261D766}
+		{72664E68-CF0B-4490-800B-5CEF066AF753} = {96455E4A-96B7-4E64-8CFC-6E2FA261D766}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE126D25-125B-4010-AF3C-9263ABE9F3D9}

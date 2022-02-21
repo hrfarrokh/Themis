@@ -1,4 +1,4 @@
-using Themis.Application.Contracts;
+using Themis.Application;
 
 namespace Themis.Infrastructure.Services
 {

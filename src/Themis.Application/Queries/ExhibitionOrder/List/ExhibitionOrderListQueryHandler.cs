@@ -1,14 +1,16 @@
 using Ardalis.GuardClauses;
 using AutoMapper;
 using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Themis.Application.Contracts;
-using Themis.Application.Contracts.Persistance;
+using Themis.Application.Persistance;
+using Themis.Core.LhsBracket.LinqExpression;
 using Themis.Domain;
 
 namespace Themis.Application
 {
-    public class ExhibitionOrderListQueryHandler : IExhibitionOrderListQueryHandler
+    public class ExhibitionOrderListQueryHandler
+        : IRequestHandler<ExhibitionOrderListQuery, ListResponse<OrderListDto>>
     {
         private readonly IQueryRepository _repository;
         private readonly IMapper _mapper;
@@ -20,7 +22,7 @@ namespace Themis.Application
             _mapper = mapper;
         }
 
-        public async Task<ListResponse<OrderListDto>> HandleAsync(
+        public async Task<ListResponse<OrderListDto>> Handle(
             ExhibitionOrderListQuery request,
             CancellationToken ct)
         {
@@ -31,7 +33,9 @@ namespace Themis.Application
             Guid? cursor = null;
 
             var orders = _repository.Query<OrderEntity>()
-                                    .Where(e => e.Type == OrderType.Exhibition);
+                                    .Where(e => e.Type == OrderType.Exhibition)
+                                    .ApplyFilters(e => e.TrackingCode, request.TrackingCode)
+                                    .ApplyFilters(e => e.Customer.PhoneNumber, request.PhoneNumber);
 
             if (request.TotalCount)
                 totalCount = await orders.CountAsync(ct);
@@ -39,10 +43,10 @@ namespace Themis.Application
             if (request.Cursor.HasValue)
                 orders = orders.Where(e => e.Id.CompareTo(request.Cursor.Value) > 0);
 
-            var items = await _mapper.ProjectTo<OrderListDto>(orders.Take(request.Take + 1))
+            var items = await _mapper.ProjectTo<OrderListDto>(orders.Take(request.Take))
                                      .ToListAsync(ct);
 
-            if (items.Count == request.Take + 1)
+            if (items.Count == request.Take)
                 cursor = items.Last().Key;
 
             return new ListResponse<OrderListDto>(items, totalCount, cursor);

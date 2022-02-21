@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Loki.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
   </ItemGroup>
@@ -26,6 +34,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Themis.Infrastructure\Themis.Infrastructure.csproj" />
+    <ProjectReference Include="..\Themis.Core.LhsBracket.ModelBinder\Themis.Core.LhsBracket.ModelBinder.csproj" />
   </ItemGroup>
 
 </Project>

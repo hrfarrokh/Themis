@@ -1,6 +1,6 @@
 using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Http;
-using Themis.Application.Contracts;
+using Themis.Application;
 
 namespace Themis.Infrastructure.Services
 {
@@ -20,7 +20,7 @@ namespace Themis.Infrastructure.Services
 
         public string GetUsername()
         {
-            return "my@email.com";
+            return "user@gmail.com";
         }
     }
 }

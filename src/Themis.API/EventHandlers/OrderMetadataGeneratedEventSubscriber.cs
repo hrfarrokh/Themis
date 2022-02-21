@@ -1,16 +1,17 @@
 using Ardalis.GuardClauses;
-using Themis.Application.Contracts;
+using MediatR;
+using Themis.Application;
 
 namespace Themis.API
 {
     public class OrderMetadataGeneratedEventSubscriber
     {
-        private readonly IPlaceOrderMetadataHandler _handler;
+        private readonly IMediator _mediator;
 
-        public OrderMetadataGeneratedEventSubscriber(IPlaceOrderMetadataHandler handler)
+        public OrderMetadataGeneratedEventSubscriber(IMediator mediator)
         {
-            _handler = Guard.Against.Null(handler);
-            _handler = handler;
+            _mediator = Guard.Against.Null(mediator);
+            _mediator = mediator;
         }
 
         public async Task HandleAsync(
@@ -19,7 +20,7 @@ namespace Themis.API
         {
             Guard.Against.Null(request);
 
-            await _handler.HandleAsync(request, ct);
+            await _mediator.Send(request, ct);
         }
     }
 }
