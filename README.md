@@ -15,15 +15,15 @@ It's based on .NET Core, Clean Architecture, CQRS and DDD practices.
 * [ASP.NET Core API Endpoints](https://github.com/ardalis/ApiEndpoints)
 * Optimized `ValueObject` Base Class
 * Keyset (Seek) Pagination
+* LHS Bracket Filtering
+* Unit Of Work
 
 ### TO BE
 
-* LHS Bracket Filtering
-* Unit Of Work
-* Authorization
 * Exceptions
 * Domain Events
 * Integration Events
+* Authorization
 
 ## Description
 
