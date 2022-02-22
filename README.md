@@ -13,6 +13,7 @@ It's based on .NET Core, Clean Architecture, CQRS and DDD practices.
 * EF Core For Persistance
 * [Smart Enum](https://github.com/ardalis/SmartEnum)
 * [ASP.NET Core API Endpoints](https://github.com/ardalis/ApiEndpoints)
+* [MediatR](https://github.com/jbogard/MediatR)
 * Optimized `ValueObject` Base Class
 * Keyset (Seek) Pagination
 * LHS Bracket Filtering
